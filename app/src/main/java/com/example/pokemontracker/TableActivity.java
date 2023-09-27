@@ -10,7 +10,7 @@ import android.widget.*;
 import java.util.*;
 
 
-public class LinearActivity extends AppCompatActivity {
+public class TableActivity extends AppCompatActivity {
 
     View.OnClickListener resetListener = new View.OnClickListener() {
         @Override
@@ -39,23 +39,10 @@ public class LinearActivity extends AppCompatActivity {
         }
     };
 
-    AdapterView.OnItemSelectedListener spinListener = new AdapterView.OnItemSelectedListener() {
-        @Override
-        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-            String message = adapterView.getItemAtPosition(i).toString();
-            Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
-        }
-
-        @Override
-        public void onNothingSelected(AdapterView<?> adapterView) {
-
-        }
-    };
-
-    View.OnClickListener tableListener = new View.OnClickListener() {
+    View.OnClickListener linearListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent switching = new Intent(getApplicationContext(), TableActivity.class);
+            Intent switching = new Intent(getApplicationContext(), LinearActivity.class);
             startActivity(switching);
         }
     };
@@ -68,7 +55,18 @@ public class LinearActivity extends AppCompatActivity {
         }
     };
 
+    AdapterView.OnItemSelectedListener spinListener = new AdapterView.OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+            String message = adapterView.getItemAtPosition(i).toString();
+            Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+        }
 
+        @Override
+        public void onNothingSelected(AdapterView<?> adapterView) {
+
+        }
+    };
     TextView appName, regisCatch, nationalNumber, name, species, gender, height, weight,
             level, baseStats, hp, attack, defence;
 
@@ -76,13 +74,13 @@ public class LinearActivity extends AppCompatActivity {
             et_hp, et_attack, et_defence;
     RadioButton female, male, unk;
 
-    Button reset, save, main, table;
+    Button reset, save, linear, main;
     Spinner splevel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_linear);
+        setContentView(R.layout.activity_table);
 
         //Titles
         appName = requireViewById(R.id.AppName);
@@ -119,8 +117,9 @@ public class LinearActivity extends AppCompatActivity {
         //Buttons
         reset = requireViewById(R.id.resetButton);
         save = requireViewById(R.id.saveButton);
+        linear = requireViewById(R.id.linearButton);
         main = requireViewById(R.id.mainButton);
-        table = requireViewById(R.id.tableButton);
+
 
         //Spinner
         splevel = requireViewById(R.id.spinLevel);
@@ -136,8 +135,8 @@ public class LinearActivity extends AppCompatActivity {
 
         reset.setOnClickListener(resetListener);
         save.setOnClickListener(saveListener);
+        linear.setOnClickListener(linearListener);
         main.setOnClickListener(mainListener);
-        table.setOnClickListener(tableListener);
     }
 
     private boolean validateInputs() {
@@ -255,6 +254,4 @@ public class LinearActivity extends AppCompatActivity {
         }
         return true;
     }
-
-    //constraints need to be completed tmw
 }

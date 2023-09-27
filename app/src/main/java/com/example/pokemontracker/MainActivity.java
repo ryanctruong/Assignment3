@@ -47,6 +47,16 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    View.OnClickListener tableListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent switching = new Intent(getApplicationContext(), TableActivity.class);
+            startActivity(switching);
+        }
+    };
+
+
+
     AdapterView.OnItemSelectedListener spinListener = new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -66,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
             et_hp, et_attack, et_defence;
     RadioButton female, male, unk;
 
-    Button reset, save, linear;
+    Button reset, save, linear, table;
     Spinner splevel;
 
     @Override
@@ -110,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
         reset = requireViewById(R.id.resetButton);
         save = requireViewById(R.id.saveButton);
         linear = requireViewById(R.id.linearButton);
+        table = requireViewById(R.id.tableButton);
 
 
         //Spinner
@@ -127,6 +138,7 @@ public class MainActivity extends AppCompatActivity {
         reset.setOnClickListener(resetListener);
         save.setOnClickListener(saveListener);
         linear.setOnClickListener(linearListener);
+        table.setOnClickListener(tableListener);
     }
 
     private boolean validateInputs() {

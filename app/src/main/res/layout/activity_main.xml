@@ -34,10 +34,10 @@
         android:id="@+id/saveButton"
         android:layout_width="91dp"
         android:layout_height="46dp"
-        android:layout_marginStart="292dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="14dp"
         android:text="@string/save"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_pokeDefence" />
 
     <EditText
@@ -295,13 +295,9 @@
         android:id="@+id/resetButton"
         android:layout_width="91dp"
         android:layout_height="46dp"
-        android:layout_marginStart="189dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="112dp"
+        android:layout_marginTop="27dp"
         android:text="@string/reset"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/saveButton"
         app:layout_constraintTop_toBottomOf="@+id/et_pokeDefence" />
 
     <RadioButton
@@ -328,10 +324,22 @@
         android:id="@+id/linearButton"
         android:layout_width="91dp"
         android:layout_height="46dp"
-        android:layout_marginStart="91dp"
-        android:layout_marginTop="185dp"
+        android:layout_marginTop="184dp"
+        android:layout_marginEnd="2dp"
         android:text="Linear"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/resetButton"
         app:layout_constraintTop_toBottomOf="@+id/baseStats" />
+
+    <Button
+        android:id="@+id/tableButton"
+        android:layout_width="91dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="4dp"
+        android:text="Table"
+        app:layout_constraintEnd_toStartOf="@+id/linearButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pokeDefence" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
