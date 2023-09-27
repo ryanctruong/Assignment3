@@ -176,13 +176,26 @@ public class TableActivity extends AppCompatActivity {
             allValid = false;
         }
 
-
         boolean isMale = male.isChecked();
         boolean isFemale = female.isChecked();
         boolean isUnk  = unk.isChecked();
         if (!isMale && !isFemale && !isUnk) {
             Toast.makeText(getApplicationContext(), "Please select a gender.", Toast.LENGTH_SHORT).show();
             gender.setTextColor(Color.parseColor("Red"));
+            allValid = false;
+        }
+
+        double heightValue = Double.parseDouble(et_height.getText().toString());
+        if(heightValue < 0.3 || heightValue > 19.99){
+            Toast.makeText(getApplicationContext(), "Height must be between 0.3-19.99.", Toast.LENGTH_SHORT).show();
+            height.setTextColor(Color.parseColor("Red"));
+            allValid = false;
+        }
+
+        double weightValue = Double.parseDouble(et_weight.getText().toString());
+        if(weightValue < 0.1 || weightValue > 820){
+            Toast.makeText(getApplicationContext(), "Weight must be between 0.1-820.", Toast.LENGTH_SHORT).show();
+            weight.setTextColor(Color.parseColor("Red"));
             allValid = false;
         }
 

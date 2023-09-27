@@ -188,6 +188,20 @@ public class ConstraintActivity extends AppCompatActivity {
             allValid = false;
         }
 
+        double heightValue = Double.parseDouble(et_height.getText().toString());
+        if(heightValue < 0.3 || heightValue > 19.99){
+            Toast.makeText(getApplicationContext(), "Height must be between 0.3-19.99.", Toast.LENGTH_SHORT).show();
+            height.setTextColor(Color.parseColor("Red"));
+            allValid = false;
+        }
+
+        double weightValue = Double.parseDouble(et_weight.getText().toString());
+        if(weightValue < 0.1 || weightValue > 820){
+            Toast.makeText(getApplicationContext(), "Weight must be between 0.1-820.", Toast.LENGTH_SHORT).show();
+            weight.setTextColor(Color.parseColor("Red"));
+            allValid = false;
+        }
+
         int hpValue = Integer.parseInt(et_hp.getText().toString());
         if (hpValue < 1 || hpValue > 362) {
             Toast.makeText(getApplicationContext(), "HP must be 1 to 362.", Toast.LENGTH_SHORT).show();
