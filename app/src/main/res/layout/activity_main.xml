@@ -324,4 +324,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_pokeWeight" />
 
+    <Button
+        android:id="@+id/linearButton"
+        android:layout_width="91dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="91dp"
+        android:layout_marginTop="185dp"
+        android:text="Linear"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/baseStats" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

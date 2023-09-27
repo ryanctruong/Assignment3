@@ -2,7 +2,6 @@ package com.example.pokemontracker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +9,7 @@ import android.widget.*;
 import java.util.*;
 
 
-public class MainActivity extends AppCompatActivity {
+public class LinearActivity extends AppCompatActivity {
 
     View.OnClickListener resetListener = new View.OnClickListener() {
         @Override
@@ -39,14 +38,6 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    View.OnClickListener linearListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent switching = new Intent(getApplicationContext(), LinearActivity.class);
-            startActivity(switching);
-        }
-    };
-
     AdapterView.OnItemSelectedListener spinListener = new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -66,13 +57,13 @@ public class MainActivity extends AppCompatActivity {
             et_hp, et_attack, et_defence;
     RadioButton female, male, unk;
 
-    Button reset, save, linear;
+    Button reset, save;
     Spinner splevel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_linear);
 
         //Titles
         appName = requireViewById(R.id.AppName);
@@ -109,8 +100,6 @@ public class MainActivity extends AppCompatActivity {
         //Buttons
         reset = requireViewById(R.id.resetButton);
         save = requireViewById(R.id.saveButton);
-        linear = requireViewById(R.id.linearButton);
-
 
         //Spinner
         splevel = requireViewById(R.id.spinLevel);
@@ -126,7 +115,6 @@ public class MainActivity extends AppCompatActivity {
 
         reset.setOnClickListener(resetListener);
         save.setOnClickListener(saveListener);
-        linear.setOnClickListener(linearListener);
     }
 
     private boolean validateInputs() {
@@ -244,4 +232,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
+
+    //constraints need to be completed tmw
 }
