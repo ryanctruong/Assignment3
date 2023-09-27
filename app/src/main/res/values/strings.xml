@@ -24,4 +24,8 @@
     <string name="base_stats">Base Stats</string>
     <string name="reset">Reset</string>
     <string name="female">Female</string>
+    <string name="fem">fem</string>
+    <string name="linear">Linear</string>
+    <string name="main">Constr</string>
+    <string name="table">Table</string>
 </resources>

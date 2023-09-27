@@ -63,7 +63,7 @@ public class LinearActivity extends AppCompatActivity {
     View.OnClickListener mainListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent switching = new Intent(getApplicationContext(), MainActivity.class);
+            Intent switching = new Intent(getApplicationContext(), ConstraintActivity.class);
             startActivity(switching);
         }
     };

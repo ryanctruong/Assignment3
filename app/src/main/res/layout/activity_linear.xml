@@ -220,13 +220,13 @@
                 android:id="@+id/mainButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Main" />
+                android:text="@string/main" />
 
             <Button
                 android:id="@+id/tableButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Table" />
+                android:text="@string/table" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,10 +16,10 @@
             android:name=".TableActivity"
             android:exported="true" />
         <activity
-            android:name=".LinearActivity"
+            android:name=".ConstraintActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".LinearActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

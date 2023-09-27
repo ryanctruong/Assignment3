@@ -126,19 +126,19 @@
                         android:id="@+id/radioFem"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="fem" />
+                        android:text="@string/fem" />
 
                     <RadioButton
                         android:id="@+id/radioMale"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="male" />
+                        android:text="@string/male" />
 
                     <RadioButton
                         android:id="@+id/radioUnk"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="unk" />
+                        android:text="@string/unk" />
                 </TableRow>
             </TableLayout>
 
@@ -311,13 +311,13 @@
                 android:id="@+id/linearButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Linear" />
+                android:text="@string/linear" />
 
             <Button
                 android:id="@+id/mainButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Main" />
+                android:text="@string/main" />
         </TableRow>
     </TableLayout>
 

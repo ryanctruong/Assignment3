@@ -10,7 +10,7 @@ import android.widget.*;
 import java.util.*;
 
 
-public class MainActivity extends AppCompatActivity {
+public class ConstraintActivity extends AppCompatActivity {
 
     View.OnClickListener resetListener = new View.OnClickListener() {
         @Override
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_constraint);
 
         //Titles
         appName = requireViewById(R.id.AppName);
