@@ -1,235 +1,229 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".LinearActivity">
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/AppName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/poke_tracker"
+            android:textAlignment="center"
+            android:textSize="34sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/newCatch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/register_new_catch"
+            android:textAlignment="center"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/natNumber"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:text="@string/national_number" />
+
+        <EditText
+            android:id="@+id/et_natNumber"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:ems="10"
+            android:inputType="number"
+            android:text="@string/_896"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/pokeName"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:text="@string/name" />
+
+        <EditText
+            android:id="@+id/et_pokeName"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:ems="10"
+            android:inputType="text"
+            android:text="@string/glastrier"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/speciesCat"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:text="@string/species" />
+
+        <EditText
+            android:id="@+id/et_speciesCat"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:ems="10"
+            android:inputType="text"
+            android:text="@string/wild_horse_pokemon"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/pokeGender"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:text="@string/gender" />
+
+        <RadioButton
+            android:id="@+id/radioFem"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:text="@string/female"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/radioMale"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:text="@string/male"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/radioUnk"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:text="@string/unk"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/pokeHeight"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:text="@string/height" />
+
+        <EditText
+            android:id="@+id/et_pokeHeight"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:ems="10"
+            android:inputType="number|numberDecimal"
+            android:text="@string/_2_2_m"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/pokeWeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/weight" />
+
+        <EditText
+            android:id="@+id/et_pokeWeight"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:ems="10"
+            android:inputType="number|numberDecimal"
+            android:text="@string/_800_0_kg"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/pokeLevel"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:text="@string/level" />
+
+        <Spinner
+            android:id="@+id/spinLevel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/baseStats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/base_stats"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/pokeHP"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:text="@string/hp" />
+
+        <EditText
+            android:id="@+id/et_pokeHP"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:ems="10"
+            android:inputType="number"
+            android:text="@string/_0"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/pokeAttack"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:text="@string/attack" />
+
+        <EditText
+            android:id="@+id/et_pokeAttack"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:ems="10"
+            android:inputType="number"
+            android:text="@string/_0"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/pokeDefence"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:text="@string/defence" />
+
+        <EditText
+            android:id="@+id/et_pokeDefence"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:ems="10"
+            android:inputType="number"
+            android:text="@string/_0"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/resetButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/reset" />
+
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/save" />
+
+        <Button
+            android:id="@+id/deleteButton"
             android:layout_width="387dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            tools:layout_editor_absoluteX="1dp"
-            tools:layout_editor_absoluteY="1dp">
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/delete" />
 
-            <ListView
-                android:id="@+id/list_LV"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp" />
-
-            <TextView
-                android:id="@+id/AppName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/poke_tracker"
-                android:textAlignment="center"
-                android:textSize="34sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/newCatch"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/register_new_catch"
-                android:textAlignment="center"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/natNumber"
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:text="@string/national_number" />
-
-            <EditText
-                android:id="@+id/et_natNumber"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:ems="10"
-                android:inputType="number"
-                android:text="@string/_896"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/pokeName"
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:text="@string/name" />
-
-            <EditText
-                android:id="@+id/et_pokeName"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:ems="10"
-                android:inputType="text"
-                android:text="@string/glastrier"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/speciesCat"
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:text="@string/species" />
-
-            <EditText
-                android:id="@+id/et_speciesCat"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:ems="10"
-                android:inputType="text"
-                android:text="@string/wild_horse_pokemon"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/pokeGender"
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:text="@string/gender" />
-
-            <RadioButton
-                android:id="@+id/radioFem"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:text="@string/female"
-                android:textSize="12sp" />
-
-            <RadioButton
-                android:id="@+id/radioMale"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:text="@string/male"
-                android:textSize="12sp" />
-
-            <RadioButton
-                android:id="@+id/radioUnk"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:text="@string/unk"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/pokeHeight"
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:text="@string/height" />
-
-            <EditText
-                android:id="@+id/et_pokeHeight"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:ems="10"
-                android:inputType="number|numberDecimal"
-                android:text="@string/_2_2_m"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/pokeWeight"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/weight" />
-
-            <EditText
-                android:id="@+id/et_pokeWeight"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:ems="10"
-                android:inputType="number|numberDecimal"
-                android:text="@string/_800_0_kg"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/pokeLevel"
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:text="@string/level" />
-
-            <Spinner
-                android:id="@+id/spinLevel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/baseStats"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/base_stats"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/pokeHP"
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:text="@string/hp" />
-
-            <EditText
-                android:id="@+id/et_pokeHP"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:ems="10"
-                android:inputType="number"
-                android:text="@string/_0"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/pokeAttack"
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:text="@string/attack" />
-
-            <EditText
-                android:id="@+id/et_pokeAttack"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:ems="10"
-                android:inputType="number"
-                android:text="@string/_0"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/pokeDefence"
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:text="@string/defence" />
-
-            <EditText
-                android:id="@+id/et_pokeDefence"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:ems="10"
-                android:inputType="number"
-                android:text="@string/_0"
-                android:textSize="12sp" />
-
-            <Button
-                android:id="@+id/resetButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/reset" />
-
-            <Button
-                android:id="@+id/saveButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/save" />
-
-            <Button
-                android:id="@+id/deleteButton"
-                android:layout_width="387dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="@string/delete" />
+        <ListView
+            android:id="@+id/list_LV"
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center"
+            android:nestedScrollingEnabled="true"/>
 
 
-        </LinearLayout>
-    </ScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</ScrollView>
