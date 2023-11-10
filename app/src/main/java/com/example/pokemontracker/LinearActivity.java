@@ -117,6 +117,7 @@ public class LinearActivity extends AppCompatActivity {
 
         reset.setOnClickListener(resetListener);
         save.setOnClickListener(savePokemonListener);
+        delete.setOnClickListener(delete_from_list);
     }
 
     private boolean validateInputs() {
@@ -251,7 +252,6 @@ public class LinearActivity extends AppCompatActivity {
         }
         return true;
     }
-
     String[] fromColumns = {
             PokemonDB.COL1_NAME,
             PokemonDB.COL2_NAME,
@@ -262,7 +262,6 @@ public class LinearActivity extends AppCompatActivity {
             PokemonDB.COL7_NAME,
             PokemonDB.COL8_NAME
     };
-
     int[] toViews = {
             R.id.tv_pokemon_national_number,
             R.id.tv_pokemon_name,
@@ -275,6 +274,7 @@ public class LinearActivity extends AppCompatActivity {
     };
 
     public void updateListUI() {
+        Cursor cursor = getContentResolver().query(PokemonDB.CONTENT_URI, null, null, null, null);
         adapter = new SimpleCursorAdapter(
                 getApplicationContext(),
                 R.layout.list_item_pokemon,
@@ -290,42 +290,56 @@ public class LinearActivity extends AppCompatActivity {
     View.OnClickListener savePokemonListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if (validateInputs()) {
+            if (validateInputs())  {
                 ContentValues values = new ContentValues();
 
-                try {
-                    int natNumberValue = Integer.parseInt(et_nationalNumber.getText().toString());
-                    values.put(PokemonDB.COL1_NAME, natNumberValue);
+                values.put(PokemonDB.COL1_NAME, et_nationalNumber.getText().toString());
 
-                    values.put(PokemonDB.COL2_NAME, et_name.getText().toString());
-                    values.put(PokemonDB.COL3_NAME, et_species.getText().toString());
+                values.put(PokemonDB.COL2_NAME, et_name.getText().toString());
+                values.put(PokemonDB.COL3_NAME, et_species.getText().toString());
 
-                    double heightValue = Double.parseDouble(et_height.getText().toString());
-                    values.put(PokemonDB.COL4_NAME, heightValue);
+                values.put(PokemonDB.COL4_NAME, et_height.getText().toString());
 
-                    double weightValue = Double.parseDouble(et_weight.getText().toString());
-                    values.put(PokemonDB.COL5_NAME, weightValue);
+                values.put(PokemonDB.COL5_NAME, et_weight.getText().toString());
 
-                    int hpValue = Integer.parseInt(et_hp.getText().toString());
-                    values.put(PokemonDB.COL6_NAME, hpValue);
+                values.put(PokemonDB.COL6_NAME, et_hp.getText().toString());
 
-                    int attackValue = Integer.parseInt(et_attack.getText().toString());
-                    values.put(PokemonDB.COL7_NAME, attackValue);
+                values.put(PokemonDB.COL7_NAME, et_attack.getText().toString());
+                values.put(PokemonDB.COL8_NAME, et_defence.getText().toString());
 
-                    int defenceValue = Integer.parseInt(et_defence.getText().toString());
-                    values.put(PokemonDB.COL8_NAME, defenceValue);
+                getContentResolver().insert(PokemonDB.CONTENT_URI, values);
 
-                    Uri newUri = getContentResolver().insert(PokemonDB.CONTENT_URI, values);
-
-                    updateListUI();
-                    Toast.makeText(getApplicationContext(), "Pokemon Stored", Toast.LENGTH_LONG).show();
-                } catch (NumberFormatException e) {
-                    Toast.makeText(getApplicationContext(), "Invalid numeric input.", Toast.LENGTH_SHORT).show();
-                }
+                updateListUI();
+                Toast.makeText(getApplicationContext(), "Pokemon Stored", Toast.LENGTH_LONG).show();
             }
 
         }
     };
+
+    View.OnClickListener delete_from_list = v -> {
+        String selection = "_id = (SELECT MIN(_id) FROM " + PokemonDB.TABLE_NAME + ")";
+
+
+        int deletedRows = getContentResolver().delete(PokemonDB.CONTENT_URI, selection, null);
+
+        if (deletedRows > 0) {
+            Toast.makeText(getApplicationContext(), "Oldest Pokemon deleted", Toast.LENGTH_SHORT).show();
+            updateListUI();
+        } else {
+            Toast.makeText(getApplicationContext(), "No Pokemon to delete", Toast.LENGTH_SHORT).show();
+        }
+    };
+//    private boolean duplicate(String natNumber) {
+//        Cursor cursor = getContentResolver().query(
+//                PokemonDB.CONTENT_URI,
+//                null,
+//                PokemonDB.COL1_NAME + " = ?",
+//                new String[]{natNumber},
+//                null
+//        );
+//
+//        return cursor != null;
+//    }
 
 
 }

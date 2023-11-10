@@ -23,14 +23,14 @@ public class PokemonDB extends ContentProvider {
     public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + TABLE_NAME);
     private static final String CREATE_URI_QUERY = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME +
             "(_id INTEGER PRIMARY KEY, " +
-            COL1_NAME + " TEXT, " +
+            COL1_NAME + " INTEGER, " +
             COL2_NAME + " TEXT, " +
             COL3_NAME + " TEXT, " +
-            COL4_NAME + " TEXT, " +
-            COL5_NAME + " TEXT, " +
-            COL6_NAME + " TEXT, " +
-            COL7_NAME + " TEXT, " +
-            COL8_NAME + " TEXT)";
+            COL4_NAME + " DOUBLE, " +
+            COL5_NAME + " DOUBLE, " +
+            COL6_NAME + " INTEGER, " +
+            COL7_NAME + " INTEGER, " +
+            COL8_NAME + " INTEGER)";
 
 
     protected static final class MainDBHelper extends SQLiteOpenHelper {
