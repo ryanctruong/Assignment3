@@ -2,8 +2,11 @@ package com.example.pokemontracker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
@@ -28,16 +31,6 @@ public class LinearActivity extends AppCompatActivity {
         }
     };
 
-    View.OnClickListener saveListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            if (validateInputs()) {
-                Toast.makeText(getApplicationContext(), "Information stored in the database", Toast.LENGTH_LONG).show();
-                defaultColors();
-            }
-        }
-    };
-
     AdapterView.OnItemSelectedListener spinListener = new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -51,22 +44,6 @@ public class LinearActivity extends AppCompatActivity {
         }
     };
 
-    View.OnClickListener tableListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent switching = new Intent(getApplicationContext(), TableActivity.class);
-            startActivity(switching);
-        }
-    };
-
-    View.OnClickListener mainListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent switching = new Intent(getApplicationContext(), ConstraintActivity.class);
-            startActivity(switching);
-        }
-    };
-
 
     TextView appName, regisCatch, nationalNumber, name, species, gender, height, weight,
             level, baseStats, hp, attack, defence;
@@ -75,8 +52,13 @@ public class LinearActivity extends AppCompatActivity {
             et_hp, et_attack, et_defence;
     RadioButton female, male, unk;
 
-    Button reset, save, main, table;
+    Button reset, save, delete;
+
+    ListView listLV;
     Spinner splevel;
+
+    SimpleCursorAdapter adapter;
+    Cursor cursor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,8 +99,9 @@ public class LinearActivity extends AppCompatActivity {
         //Buttons
         reset = requireViewById(R.id.resetButton);
         save = requireViewById(R.id.saveButton);
-        main = requireViewById(R.id.mainButton);
-        table = requireViewById(R.id.tableButton);
+        delete = requireViewById(R.id.deleteButton);
+
+        listLV = findViewById(R.id.list_LV);
 
         //Spinner
         splevel = requireViewById(R.id.spinLevel);
@@ -133,9 +116,7 @@ public class LinearActivity extends AppCompatActivity {
         splevel.setAdapter(typeAdapter);
 
         reset.setOnClickListener(resetListener);
-        save.setOnClickListener(saveListener);
-        main.setOnClickListener(mainListener);
-        table.setOnClickListener(tableListener);
+        save.setOnClickListener(savePokemonListener);
     }
 
     private boolean validateInputs() {
@@ -271,5 +252,80 @@ public class LinearActivity extends AppCompatActivity {
         return true;
     }
 
-    //constraints need to be completed tmw
+    String[] fromColumns = {
+            PokemonDB.COL1_NAME,
+            PokemonDB.COL2_NAME,
+            PokemonDB.COL3_NAME,
+            PokemonDB.COL4_NAME,
+            PokemonDB.COL5_NAME,
+            PokemonDB.COL6_NAME,
+            PokemonDB.COL7_NAME,
+            PokemonDB.COL8_NAME
+    };
+
+    int[] toViews = {
+            R.id.tv_pokemon_national_number,
+            R.id.tv_pokemon_name,
+            R.id.tv_pokemon_species,
+            R.id.tv_pokemon_height,
+            R.id.tv_pokemon_weight,
+            R.id.tv_pokemon_hp,
+            R.id.tv_pokemon_attack,
+            R.id.tv_pokemon_defense
+    };
+
+    public void updateListUI() {
+        adapter = new SimpleCursorAdapter(
+                getApplicationContext(),
+                R.layout.list_item_pokemon,
+                cursor,
+                fromColumns,
+                toViews,
+                0
+        );
+
+        listLV.setAdapter(adapter);
+    }
+
+    View.OnClickListener savePokemonListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (validateInputs()) {
+                ContentValues values = new ContentValues();
+
+                try {
+                    int natNumberValue = Integer.parseInt(et_nationalNumber.getText().toString());
+                    values.put(PokemonDB.COL1_NAME, natNumberValue);
+
+                    values.put(PokemonDB.COL2_NAME, et_name.getText().toString());
+                    values.put(PokemonDB.COL3_NAME, et_species.getText().toString());
+
+                    double heightValue = Double.parseDouble(et_height.getText().toString());
+                    values.put(PokemonDB.COL4_NAME, heightValue);
+
+                    double weightValue = Double.parseDouble(et_weight.getText().toString());
+                    values.put(PokemonDB.COL5_NAME, weightValue);
+
+                    int hpValue = Integer.parseInt(et_hp.getText().toString());
+                    values.put(PokemonDB.COL6_NAME, hpValue);
+
+                    int attackValue = Integer.parseInt(et_attack.getText().toString());
+                    values.put(PokemonDB.COL7_NAME, attackValue);
+
+                    int defenceValue = Integer.parseInt(et_defence.getText().toString());
+                    values.put(PokemonDB.COL8_NAME, defenceValue);
+
+                    Uri newUri = getContentResolver().insert(PokemonDB.CONTENT_URI, values);
+
+                    updateListUI();
+                    Toast.makeText(getApplicationContext(), "Pokemon Stored", Toast.LENGTH_LONG).show();
+                } catch (NumberFormatException e) {
+                    Toast.makeText(getApplicationContext(), "Invalid numeric input.", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+        }
+    };
+
+
 }

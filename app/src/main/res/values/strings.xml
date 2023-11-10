@@ -28,4 +28,5 @@
     <string name="linear">Linear</string>
     <string name="main">Constr</string>
     <string name="table">Table</string>
+    <string name="delete">Delete\n</string>
 </resources>

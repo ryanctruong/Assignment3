@@ -3,6 +3,7 @@ package com.example.pokemontracker;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -11,7 +12,6 @@ import java.util.*;
 
 
 public class ConstraintActivity extends AppCompatActivity {
-
     View.OnClickListener resetListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -27,35 +27,6 @@ public class ConstraintActivity extends AppCompatActivity {
             splevel.setSelection(0);
         }
     };
-
-    View.OnClickListener saveListener = new View.OnClickListener() {
-        double labelHeight, labelWeight;
-        @Override
-        public void onClick(View view) {
-            if (validateInputs()) {
-                Toast.makeText(getApplicationContext(), "Information stored in the database", Toast.LENGTH_LONG).show();
-                defaultColors();
-            }
-        }
-    };
-
-    View.OnClickListener linearListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent switching = new Intent(getApplicationContext(), LinearActivity.class);
-            startActivity(switching);
-        }
-    };
-
-    View.OnClickListener tableListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent switching = new Intent(getApplicationContext(), TableActivity.class);
-            startActivity(switching);
-        }
-    };
-
-
 
     AdapterView.OnItemSelectedListener spinListener = new AdapterView.OnItemSelectedListener() {
         @Override
@@ -78,6 +49,8 @@ public class ConstraintActivity extends AppCompatActivity {
 
     Button reset, save, linear, table;
     Spinner splevel;
+
+    SimpleCursorAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,8 +92,6 @@ public class ConstraintActivity extends AppCompatActivity {
         //Buttons
         reset = requireViewById(R.id.resetButton);
         save = requireViewById(R.id.saveButton);
-        linear = requireViewById(R.id.linearButton);
-        table = requireViewById(R.id.tableButton);
 
 
         //Spinner
@@ -137,8 +108,6 @@ public class ConstraintActivity extends AppCompatActivity {
 
         reset.setOnClickListener(resetListener);
         save.setOnClickListener(saveListener);
-        linear.setOnClickListener(linearListener);
-        table.setOnClickListener(tableListener);
     }
 
     private boolean validateInputs() {
@@ -270,4 +239,31 @@ public class ConstraintActivity extends AppCompatActivity {
         }
         return true;
     }
+
+    String[] fromColumns = {
+            PokemonDB.COL1_NAME,
+            PokemonDB.COL2_NAME,
+            PokemonDB.COL3_NAME,
+            PokemonDB.COL4_NAME,
+            PokemonDB.COL5_NAME,
+            PokemonDB.COL6_NAME,
+            PokemonDB.COL7_NAME,
+            PokemonDB.COL8_NAME
+    };
+
+
+
+
+
+    View.OnClickListener saveListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            if (validateInputs()) {
+                Toast.makeText(getApplicationContext(), "Information stored in the database", Toast.LENGTH_LONG).show();
+                defaultColors();
+            }
+        }
+    };
+
+
 }

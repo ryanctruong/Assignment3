@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PokemonTracker"
         tools:targetApi="31">
+        <provider
+            android:name=".PokemonDB"
+            android:authorities="com.PokemonTracker.pokemonDB"
+            android:enabled="true"
+            android:exported="true"></provider>
+
         <activity
             android:name=".TableActivity"
             android:exported="true" />

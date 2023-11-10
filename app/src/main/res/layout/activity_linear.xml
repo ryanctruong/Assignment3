@@ -37,6 +37,12 @@
                 android:textAlignment="center"
                 android:textSize="16sp" />
 
+            <ListView
+                android:id="@+id/list_LV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"/>
+
             <TextView
                 android:id="@+id/natNumber"
                 android:layout_width="match_parent"
@@ -217,16 +223,13 @@
                 android:text="@string/save" />
 
             <Button
-                android:id="@+id/mainButton"
-                android:layout_width="match_parent"
+                android:id="@+id/deleteButton"
+                android:layout_width="387dp"
                 android:layout_height="wrap_content"
-                android:text="@string/main" />
+                android:layout_gravity="center_horizontal"
+                android:text="@string/delete" />
 
-            <Button
-                android:id="@+id/tableButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/table" />
+
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
