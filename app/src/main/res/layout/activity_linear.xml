@@ -20,6 +20,12 @@
             tools:layout_editor_absoluteX="1dp"
             tools:layout_editor_absoluteY="1dp">
 
+            <ListView
+                android:id="@+id/list_LV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp" />
+
             <TextView
                 android:id="@+id/AppName"
                 android:layout_width="match_parent"
@@ -36,12 +42,6 @@
                 android:text="@string/register_new_catch"
                 android:textAlignment="center"
                 android:textSize="16sp" />
-
-            <ListView
-                android:id="@+id/list_LV"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"/>
 
             <TextView
                 android:id="@+id/natNumber"
